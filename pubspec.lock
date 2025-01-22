@@ -53,18 +53,18 @@ packages:
     dependency: transitive
     description:
       name: atproto
-      sha256: a960f6c3fba2b78bf5c8874859367353c5ab2e950de0b80538368cfc93e7dc01
+      sha256: "0f3d342c4d629e9994d58dbadd4281074641ac75a18cd514b212a3b15f86019e"
       url: "https://pub.dev"
     source: hosted
-    version: "0.13.2"
+    version: "0.13.3"
   atproto_core:
     dependency: transitive
     description:
       name: atproto_core
-      sha256: "7f1f849a290890630b87d7894ed8697b6ac0476da5f46b29272fa214ad23cdbe"
+      sha256: "13e7f5f0f3d9e5be59eefd5f427adf45ffdeaa59001d4ea7c91764ba21f1e9ba"
       url: "https://pub.dev"
     source: hosted
-    version: "0.11.1"
+    version: "0.11.2"
   atproto_oauth:
     dependency: transitive
     description:
@@ -85,18 +85,18 @@ packages:
     dependency: "direct main"
     description:
       name: bluesky
-      sha256: "3094dde1cb8b537139e441a5cdea6639a9c0f525d6c974258d9ac974cc237190"
+      sha256: a8d01cfa1eab4cd97dd96c95c7382d92b75f20a6d1c6c3b769172e38fef9bb14
       url: "https://pub.dev"
     source: hosted
-    version: "0.18.5"
+    version: "0.18.8"
   bluesky_text:
     dependency: "direct main"
     description:
       name: bluesky_text
-      sha256: ef3e99d3a59d2e8c0a7ba43bbc01d11f2311a0f8e0f13dc73c8636d311ecbceb
+      sha256: a10835d17e9cfc1739ea09a5c6fc86c287aa59074c60961601f7a0cf663b1ed4
       url: "https://pub.dev"
     source: hosted
-    version: "0.7.1"
+    version: "0.7.2"
   boolean_selector:
     dependency: transitive
     description:
@@ -1122,14 +1122,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.5.1"
+  web_socket:
+    dependency: transitive
+    description:
+      name: web_socket
+      sha256: "3c12d96c0c9a4eec095246debcea7b86c0324f22df69893d538fcc6f1b8cce83"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.6"
   web_socket_channel:
     dependency: transitive
     description:
       name: web_socket_channel
-      sha256: "58c6666b342a38816b2e7e50ed0f1e261959630becd4c879c4f26bfa14aa5a42"
+      sha256: "0b8e2457400d8a859b7b2030786835a28a8e80836ef64402abef392ff4f1d0e5"
       url: "https://pub.dev"
     source: hosted
-    version: "2.4.5"
+    version: "3.0.2"
   win32:
     dependency: transitive
     description:
@@ -1158,10 +1166,10 @@ packages:
     dependency: transitive
     description:
       name: xrpc
-      sha256: "3a2b42ad246676150554de1bb035bf8fda589f2871ac8376590af5aab865996a"
+      sha256: bacfa0f6824fdeaa631aad1a5fd064c3f140c771fed94cbd04df3b7d1e008709
       url: "https://pub.dev"
     source: hosted
-    version: "0.6.0"
+    version: "0.6.1"
   yaml:
     dependency: transitive
     description:
