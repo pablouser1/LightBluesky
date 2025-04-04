@@ -6,7 +6,7 @@ import 'package:lightbluesky/helpers/ui.dart';
 import 'package:lightbluesky/helpers/urlbuilder.dart';
 import 'package:lightbluesky/partials/notificationscounter.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:lightbluesky/l10n/app_localizations.dart';
 
 /// Drawer, shown only on home page
 class MainDrawer extends StatelessWidget {
@@ -26,9 +26,7 @@ class MainDrawer extends StatelessWidget {
             ),
             child: Column(
               children: [
-                const Expanded(
-                  child: Text(App.name),
-                ),
+                const Expanded(child: Text(App.name)),
                 TextButton.icon(
                   onPressed: () async {
                     final packageInfo = await PackageInfo.fromPlatform();
@@ -78,11 +76,7 @@ class MainDrawer extends StatelessWidget {
             leading: const Icon(Icons.settings),
             title: Text(locale.drawer_settings),
             onTap: () {
-              Ui.dialog(
-                context,
-                "Under construction",
-                "TODO: Add settings",
-              );
+              Ui.dialog(context, "Under construction", "TODO: Add settings");
             },
           ),
           // SOURCE CODE
@@ -101,9 +95,7 @@ class MainDrawer extends StatelessWidget {
                 leading: const Icon(Icons.person),
                 title: Text(locale.drawer_my_profile),
                 onTap: () {
-                  context.go(
-                    UrlBuilder.profile(api.c.session!.did),
-                  );
+                  context.go(UrlBuilder.profile(api.c.session!.did));
                 },
               ),
               // LOGOUT
@@ -119,7 +111,7 @@ class MainDrawer extends StatelessWidget {
                 },
               ),
             ],
-          )
+          ),
         ],
       ),
     );

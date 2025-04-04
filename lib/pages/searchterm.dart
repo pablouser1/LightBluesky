@@ -4,14 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:lightbluesky/common.dart';
 import 'package:lightbluesky/models/customtab.dart';
 import 'package:lightbluesky/widgets/feeds/multiple.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:lightbluesky/l10n/app_localizations.dart';
 
 /// Hashtag page
 class SearchTermPage extends StatefulWidget {
-  const SearchTermPage({
-    super.key,
-    required this.q,
-  });
+  const SearchTermPage({super.key, required this.q});
 
   /// Search term
   ///
@@ -29,10 +26,7 @@ class _SearchTermPageState extends State<SearchTermPage>
 
   /// Wrapper made to adapt function to Feed type
   Future<XRPCResponse<Feed>> _func(String sort, String? cursor) async {
-    final res = await api.c.feed.searchPosts(
-      widget.q,
-      sort: sort,
-    );
+    final res = await api.c.feed.searchPosts(widget.q, sort: sort);
 
     // Copy response with modified Feed
     return XRPCResponse(
@@ -43,9 +37,7 @@ class _SearchTermPageState extends State<SearchTermPage>
       data: Feed(
         feed: List.generate(
           res.data.posts.length,
-          (index) => FeedView(
-            post: res.data.posts[index],
-          ),
+          (index) => FeedView(post: res.data.posts[index]),
         ),
         cursor: res.data.cursor,
       ),
@@ -95,12 +87,7 @@ class _SearchTermPageState extends State<SearchTermPage>
               snap: true,
               backgroundColor: Theme.of(context).colorScheme.inversePrimary,
               bottom: TabBar(
-                tabs: [
-                  for (final tab in tabs)
-                    Tab(
-                      text: tab.name,
-                    ),
-                ],
+                tabs: [for (final tab in tabs) Tab(text: tab.name)],
                 controller: _tabController,
                 isScrollable: true,
               ),

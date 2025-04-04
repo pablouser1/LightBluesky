@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lightbluesky/common.dart';
 import 'package:lightbluesky/helpers/ui.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:lightbluesky/l10n/app_localizations.dart';
 
 /// Authentication page
 class AuthPage extends StatefulWidget {
@@ -17,9 +17,7 @@ class _AuthPageState extends State<AuthPage> {
   bool _isLoading = false;
   bool _needsFactor = false;
 
-  final _serviceController = TextEditingController(
-    text: 'bsky.social',
-  );
+  final _serviceController = TextEditingController(text: 'bsky.social');
   final _identityController = TextEditingController();
   final _passwordController = TextEditingController();
   final _authFactorController = TextEditingController();
@@ -61,10 +59,7 @@ class _AuthPageState extends State<AuthPage> {
         e.response.data.error,
         e.response.data.message ?? locale.unknown_error,
         actions: [
-          TextButton(
-            onPressed: () => context.pop(),
-            child: const Text("OK"),
-          ),
+          TextButton(onPressed: () => context.pop(), child: const Text("OK")),
         ],
       );
     }
@@ -133,9 +128,7 @@ class _AuthPageState extends State<AuthPage> {
             OutlinedButton.icon(
               onPressed: !_isLoading ? () => _handleSession(locale) : null,
               icon: const Icon(Icons.login),
-              label: Text(
-                locale.auth_login,
-              ),
+              label: Text(locale.auth_login),
             ),
           ],
         ),

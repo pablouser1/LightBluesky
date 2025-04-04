@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get_time_ago/get_time_ago.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lightbluesky/helpers/customimage.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:lightbluesky/l10n/app_localizations.dart';
 import 'package:lightbluesky/helpers/urlbuilder.dart';
 
 /// Common widget for
@@ -25,16 +25,9 @@ class Actor extends StatelessWidget {
   /// Allow tapping to open actor's profile
   final bool tap;
 
-  Widget _handleLink({
-    required Widget child,
-    required BuildContext context,
-  }) {
+  Widget _handleLink({required Widget child, required BuildContext context}) {
     return InkWell(
-      onTap: tap
-          ? () => context.push(
-                UrlBuilder.profile(actor.handle),
-              )
-          : null,
+      onTap: tap ? () => context.push(UrlBuilder.profile(actor.handle)) : null,
       child: child,
     );
   }
@@ -47,27 +40,21 @@ class Actor extends StatelessWidget {
       leading: _handleLink(
         context: context,
         child: CircleAvatar(
-          backgroundImage: actor.avatar != null
-              ? CustomImage.provider(
-                  url: actor.avatar!,
-                  caching: true,
-                )
-              : null,
+          backgroundImage:
+              actor.avatar != null
+                  ? CustomImage.provider(url: actor.avatar!, caching: true)
+                  : null,
         ),
       ),
       title: _handleLink(
         context: context,
-        child: Text(
-          actor.displayName ?? '@${actor.handle}',
-        ),
+        child: Text(actor.displayName ?? '@${actor.handle}'),
       ),
       subtitle: actor.displayName != null ? Text('@${actor.handle}') : null,
-      trailing: createdAt != null
-          ? Text(GetTimeAgo.parse(
-              createdAt!,
-              locale: locale.localeName,
-            ))
-          : null,
+      trailing:
+          createdAt != null
+              ? Text(GetTimeAgo.parse(createdAt!, locale: locale.localeName))
+              : null,
     );
   }
 }

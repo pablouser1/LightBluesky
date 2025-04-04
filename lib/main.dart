@@ -4,6 +4,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lightbluesky/common.dart';
 import 'package:lightbluesky/constants/app.dart';
+import 'package:lightbluesky/l10n/app_localizations.dart';
 import 'package:lightbluesky/pages/auth.dart';
 import 'package:lightbluesky/pages/bookmarks.dart';
 import 'package:lightbluesky/pages/feed.dart';
@@ -15,15 +16,11 @@ import 'package:lightbluesky/pages/profile.dart';
 import 'package:lightbluesky/pages/search.dart';
 import 'package:lightbluesky/pages/searchterm.dart';
 import 'package:video_player_media_kit/video_player_media_kit.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
-  VideoPlayerMediaKit.ensureInitialized(
-    linux: true,
-    windows: true,
-  );
+  VideoPlayerMediaKit.ensureInitialized(linux: true, windows: true);
   runApp(const MyApp());
 }
 
@@ -63,9 +60,7 @@ class _MyAppState extends State<MyApp> {
             path: 'search',
             builder: (context, state) {
               if (state.uri.queryParameters.containsKey('q')) {
-                return SearchTermPage(
-                  q: state.uri.queryParameters['q']!,
-                );
+                return SearchTermPage(q: state.uri.queryParameters['q']!);
               }
 
               return const SearchPage();
@@ -79,42 +74,41 @@ class _MyAppState extends State<MyApp> {
           // Hashtag
           GoRoute(
             path: 'hashtag/:term',
-            builder: (context, state) => SearchTermPage(
-              q: '#${state.uri.queryParameters['term']!}',
-            ),
+            builder:
+                (context, state) =>
+                    SearchTermPage(q: '#${state.uri.queryParameters['term']!}'),
           ),
           // Profile root
           GoRoute(
             path: 'profile/:handle',
-            builder: (context, state) => ProfilePage(
-              handleOrDid: state.pathParameters['handle']!,
-            ),
+            builder:
+                (context, state) =>
+                    ProfilePage(handleOrDid: state.pathParameters['handle']!),
             routes: [
               // Post
               GoRoute(
                 path: 'post/:rkey',
-                builder: (context, state) => PostPage(
-                  handle: state.pathParameters['handle']!,
-                  rkey: state.pathParameters['rkey']!,
-                ),
+                builder:
+                    (context, state) => PostPage(
+                      handle: state.pathParameters['handle']!,
+                      rkey: state.pathParameters['rkey']!,
+                    ),
               ),
               // Feed generator
               GoRoute(
                 path: 'feed/:rkey',
-                builder: (context, state) => FeedPage(
-                  handle: state.pathParameters['handle']!,
-                  rkey: state.pathParameters['rkey']!,
-                ),
+                builder:
+                    (context, state) => FeedPage(
+                      handle: state.pathParameters['handle']!,
+                      rkey: state.pathParameters['rkey']!,
+                    ),
               ),
             ],
           ),
         ],
       ),
       // Login
-      GoRoute(
-        path: '/login',
-        builder: (context, state) => const AuthPage(),
-      ),
+      GoRoute(path: '/login', builder: (context, state) => const AuthPage()),
     ],
   );
 

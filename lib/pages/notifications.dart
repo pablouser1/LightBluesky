@@ -2,7 +2,7 @@ import 'package:bluesky/bluesky.dart' as bsky;
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lightbluesky/common.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:lightbluesky/l10n/app_localizations.dart';
 import 'package:lightbluesky/helpers/customimage.dart';
 import 'package:lightbluesky/helpers/urlbuilder.dart';
 
@@ -19,9 +19,7 @@ class NotificationsPage extends StatefulWidget {
 
 class _NotificationsPageState extends State<NotificationsPage> {
   final controller = ScrollController();
-  final List<bsky.Notification> items = List.empty(
-    growable: true,
-  );
+  final List<bsky.Notification> items = List.empty(growable: true);
 
   String? cursor;
 
@@ -39,9 +37,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
   }
 
   Future<void> _loadMore() async {
-    final res = await api.c.notification.listNotifications(
-      cursor: cursor,
-    );
+    final res = await api.c.notification.listNotifications(cursor: cursor);
 
     cursor = res.data.cursor;
 
@@ -93,18 +89,20 @@ class _NotificationsPageState extends State<NotificationsPage> {
           return Column(
             children: [
               ListTile(
-                onTap: path != null
-                    ? () {
-                        context.push(path!);
-                      }
-                    : null,
+                onTap:
+                    path != null
+                        ? () {
+                          context.push(path!);
+                        }
+                        : null,
                 leading: CircleAvatar(
-                  backgroundImage: item.author.avatar != null
-                      ? CustomImage.provider(
-                          url: item.author.avatar!,
-                          caching: true,
-                        )
-                      : null,
+                  backgroundImage:
+                      item.author.avatar != null
+                          ? CustomImage.provider(
+                            url: item.author.avatar!,
+                            caching: true,
+                          )
+                          : null,
                 ),
                 title: Text(item.author.displayName ?? item.author.handle),
                 subtitle: Text(text),

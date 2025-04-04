@@ -5,7 +5,7 @@ import 'package:lightbluesky/common.dart';
 import 'package:lightbluesky/helpers/debouncer.dart';
 import 'package:lightbluesky/helpers/ui.dart';
 import 'package:lightbluesky/partials/actor.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:lightbluesky/l10n/app_localizations.dart';
 
 /// Search page, for now only for users
 class SearchPage extends StatefulWidget {
@@ -16,14 +16,10 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPageState extends State<SearchPage> {
-  final _debouncer = Debouncer(
-    milliseconds: 500,
-  );
+  final _debouncer = Debouncer(milliseconds: 500);
   bool _isLoading = false;
 
-  List<bsky.ActorBasic> actors = List.empty(
-    growable: true,
-  );
+  List<bsky.ActorBasic> actors = List.empty(growable: true);
 
   @override
   void initState() {
@@ -46,9 +42,7 @@ class _SearchPageState extends State<SearchPage> {
           _isLoading = true;
         });
 
-        final res = await api.c.actor.searchActorsTypeahead(
-          term: term,
-        );
+        final res = await api.c.actor.searchActorsTypeahead(term: term);
 
         setState(() {
           _isLoading = false;
@@ -88,9 +82,7 @@ class _SearchPageState extends State<SearchPage> {
             child: ListView.builder(
               itemCount: actors.length,
               itemBuilder: (context, i) {
-                return Actor(
-                  actor: actors[i],
-                );
+                return Actor(actor: actors[i]);
               },
             ),
           ),

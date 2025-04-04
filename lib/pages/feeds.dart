@@ -6,7 +6,7 @@ import 'package:lightbluesky/common.dart';
 import 'package:lightbluesky/helpers/customimage.dart';
 import 'package:lightbluesky/helpers/urlbuilder.dart';
 import 'package:lightbluesky/widgets/exceptionhandler.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:lightbluesky/l10n/app_localizations.dart';
 
 /// Feed generators saved by user
 class FeedsPage extends StatefulWidget {
@@ -56,30 +56,25 @@ class _FeedsPageState extends State<FeedsPage> {
                     );
                   },
                   leading: CircleAvatar(
-                    backgroundImage: data.avatar != null
-                        ? CustomImage.provider(
-                            url: data.avatar!,
-                            caching: true,
-                          )
-                        : null,
+                    backgroundImage:
+                        data.avatar != null
+                            ? CustomImage.provider(
+                              url: data.avatar!,
+                              caching: true,
+                            )
+                            : null,
                   ),
                   title: Text(data.displayName),
                   subtitle: Text('@${data.createdBy.handle}'),
-                  trailing: Text(
-                    locale.feed_nLikes(data.likeCount),
-                  ),
+                  trailing: Text(locale.feed_nLikes(data.likeCount)),
                 );
               },
             );
           } else if (snapshot.hasError) {
-            return ExceptionHandler(
-              exception: snapshot.error!,
-            );
+            return ExceptionHandler(exception: snapshot.error!);
           }
 
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
+          return const Center(child: CircularProgressIndicator());
         },
       ),
     );
